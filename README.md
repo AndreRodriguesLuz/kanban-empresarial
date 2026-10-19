@@ -3,8 +3,8 @@
 Um sistema de gerenciamento de tarefas moderno em formato de quadro Kanban (estilo Trello), desenvolvido com o objetivo de otimizar o fluxo de trabalho interno de equipes que atuam em formato de trabalho remoto ou Home Office.
 
 ## 🚀 Demonstração (Veja funcionando ao vivo)
-Você pode testar o sistema completo rodando diretamente na internet através do link:
-👉 https://github.io
+Você pode testar o sistema completo rodando diretamente na internet através do link: 
+👉 [https://github.io](https://github.io)
 
 ## 🛠️ Tecnologias Utilizadas
 *   **HTML5:** Estruturação semântica das colunas ágeis e formulários modais.
