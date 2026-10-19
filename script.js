@@ -106,6 +106,7 @@ function salvarNoLocalStorage() {
     localStorage.setItem('kanban_tarefas', JSON.stringify(tarefas));
 }
 
+// LÓGICA DO DRAG AND DROP
 function iniciarArrasto(event, id) {
     event.dataTransfer.setData('text/plain', id);
 }
