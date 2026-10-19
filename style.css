@@ -1,0 +1,241 @@
+/* Reset de estilos padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #121214;
+    color: #e1e1e6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabeçalho do Sistema */
+.header {
+    background-color: #1a1a1e;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #29292e;
+}
+
+.header h1 {
+    font-size: 24px;
+    color: #ffffff;
+}
+
+#btn-nova-tarefa {
+    background-color: #04d361;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#btn-nova-tarefa:hover {
+    background-color: #00b351;
+}
+
+/* Container do Quadro Kanban */
+.kanban-container {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+    padding: 30px;
+    overflow-x: auto;
+    align-items: flex-start;
+}
+
+/* Colunas do Kanban */
+.kanban-column {
+    background-color: #1a1a1e;
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    border-radius: 6px;
+    border: 1px solid #29292e;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 150px);
+}
+
+.column-header {
+    padding: 15px;
+    font-weight: bold;
+    font-size: 16px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.column-header.todo { background-color: #2b2b32; color: #fba94c; border-bottom: 2px solid #fba94c; }
+.column-header.doing { background-color: #2b2b32; color: #00b37e; border-bottom: 2px solid #00b37e; }
+.column-header.done { background-color: #2b2b32; color: #7c5cff; border-bottom: 2px solid #7c5cff; }
+
+.cards-container {
+    padding: 15px;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 200px;
+}
+
+/* Cards de Tarefas */
+.task-card {
+    background-color: #202024;
+    border: 1px solid #29292e;
+    padding: 15px;
+    border-radius: 4px;
+    cursor: grab;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.1s, box-shadow 0.2s;
+}
+
+.task-card:active {
+    cursor: grabbing;
+}
+
+.task-card h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.task-card p {
+    font-size: 14px;
+    color: #a8a8b3;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.badge.baixa { background-color: rgba(4, 211, 97, 0.1); color: #04d361; }
+.badge.media { background-color: rgba(251, 169, 76, 0.1); color: #fba94c; }
+.badge.alta { background-color: rgba(247, 89, 89, 0.1); color: #f75959; }
+
+.card-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.card-actions button {
+    background: none;
+    border: none;
+    color: #7c7c8a;
+    cursor: pointer;
+    font-size: 12px;
+    transition: color 0.2s;
+}
+
+.card-actions .btn-edit:hover { color: #fba94c; }
+.card-actions .btn-delete:hover { color: #f75959; }
+
+/* Janela Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal {
+    background-color: #202024;
+    border: 1px solid #29292e;
+    padding: 30px;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.modal h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #c4c4cc;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    background-color: #121214;
+    border: 1px solid #29292e;
+    padding: 10px;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #04d361;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.modal-buttons button {
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-cancelar { background-color: #29292e; color: #c4c4cc; }
+.btn-cancelar:hover { background-color: #323238; }
+.btn-salvar { background-color: #04d361; color: #ffffff; }
+.btn-salvar:hover { background-color: #00b351; }

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão Ágil - Kanban Empresarial</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Cabeçalho do Sistema -->
+    <header class="header">
+        <h1>📋 CoreTask - Kanban Empresarial</h1>
+        <button id="btn-nova-tarefa" onclick="abrirModal()">+ Nova Tarefa</button>
+    </header>
+
+    <!-- Container Principal do Quadro -->
+    <main class="kanban-container">
+        
+        <!-- Coluna: A Fazer -->
+        <div class="kanban-column" id="a-fazer" ondragover="permitirSoltar(event)" ondrop="soltarTarefa(event, 'a-fazer')">
+            <div class="column-header todo">A Fazer</div>
+            <div class="cards-container" id="container-a-fazer">
+                <!-- As tarefas criadas entram aqui via JS -->
+            </div>
+        </div>
+
+        <!-- Coluna: Em Progresso -->
+        <div class="kanban-column" id="em-progresso" ondragover="permitirSoltar(event)" ondrop="soltarTarefa(event, 'em-progresso')">
+            <div class="column-header doing">Em Progresso</div>
+            <div class="cards-container" id="container-em-progresso">
+                <!-- As tarefas em andamento entram aqui -->
+            </div>
+        </div>
+
+        <!-- Coluna: Concluído -->
+        <div class="kanban-column" id="concluido" ondragover="permitirSoltar(event)" ondrop="soltarTarefa(event, 'concluido')">
+            <div class="column-header done">Concluído</div>
+            <div class="cards-container" id="container-concluido">
+                <!-- As tarefas finalizadas entram aqui -->
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Modal (Janela Flutuante) para Criar/Editar Tarefas -->
+    <div class="modal-overlay" id="modal-tarefa">
+        <div class="modal">
+            <h2 id="modal-titulo">Criar Nova Tarefa</h2>
+            <form id="form-tarefa" onsubmit="salvarTarefa(event)">
+                <input type="hidden" id="tarefa-id">
+                
+                <div class="form-group">
+                    <label for="titulo">Título da Tarefa</label>
+                    <input type="text" id="titulo" required placeholder="Ex: Desenvolver API de login">
+                </div>
+
+                <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <textarea id="descricao" rows="3" placeholder="Detalhes sobre o que precisa ser feito..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="prioridade">Prioridade</label>
+                    <select id="prioridade">
+                        <option value="baixa">🟢 Baixa</option>
+                        <option value="media">🟡 Média</option>
+                        <option value="alta">🔴 Alta</option>
+                    </select>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancelar" onclick="fecharModal()">Cancelar</button>
+                    <button type="submit" class="btn-salvar">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
